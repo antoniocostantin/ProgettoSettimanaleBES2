@@ -36,13 +36,15 @@ public class Collezione {
     }
 
     public void deleteById(int id) {
-        int idx = listaGiochi.stream().filter(gioco -> gioco.getId() == id).findFirst().in;
-        listaGiochi.remove(idx);
+        Gioco g = listaGiochi.stream().filter(gioco -> gioco.getId() == id).findFirst().get();
+        listaGiochi.remove(listaGiochi.indexOf(g));
+
     }
 
     public void update(Gioco g, int id) {
-        int indice = listaGiochi.stream().filter(gioco -> gioco.getId() == id).findFirst().get().getId();
-        listaGiochi.set(indice, g);
+        Gioco gi = listaGiochi.stream().filter(gioco -> gioco.getId() == id).findFirst().get();
+        listaGiochi.set(listaGiochi.indexOf(gi), g);
+
     }
 
     public void Stats(){

@@ -63,5 +63,13 @@ public class  Application {
         lista.deleteById( id2);
         System.out.println(lista);
 
+        System.out.println("Inserisci l'id dell'elemento che vuoi modificare");
+        int id3 = Integer.parseInt(sc.nextLine());
+        lista.update( gioco, id3);
+        System.out.println(lista);
+
+        lista.Stats();
+
+
     }
 }
