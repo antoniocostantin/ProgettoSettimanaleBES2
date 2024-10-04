@@ -16,7 +16,7 @@ public class Collezione {
     }
 
     public void addGioco(Gioco g) {
-        if(listaGiochi.stream().anyMatch(gioco -> gioco.getId() == g.getId()))
+        if(!listaGiochi.stream().anyMatch(gioco -> gioco.getId() == g.getId()))
             listaGiochi.add(g);
         else System.out.println("Errore: id del gioco già presente");
     }
@@ -36,7 +36,8 @@ public class Collezione {
     }
 
     public void deleteById(int id) {
-        listaGiochi.stream().filter(gioco -> gioco.getId() == id).forEach(gioco -> listaGiochi.remove(gioco));
+        int idx = listaGiochi.stream().filter(gioco -> gioco.getId() == id).findFirst().in;
+        listaGiochi.remove(idx);
     }
 
     public void update(Gioco g, int id) {
@@ -51,5 +52,12 @@ public class Collezione {
         Gioco expencier = listaGiochi.stream().filter(g -> g.getPrezzo() == stats.getMax()).findFirst().get();
         System.out.println("tot giochi da tavolo = " + giochiDaTavolo.size() +"; tot videogames = " + videogiochi.size() + "; gioco più costoso = " + expencier + "; media prezzi = " + stats.getAverage());
 
+    }
+
+    @Override
+    public String toString() {
+        return "Collezione{" +
+                "listaGiochi=" + listaGiochi +
+                '}';
     }
 }

@@ -60,6 +60,19 @@ public class Videogioco extends Gioco{
     // setter
 
 
+    @Override
+    public String toString() {
+        return "Videogioco{" +
+                "piattaforma='" + piattaforma + '\'' +
+                ", duratainOre=" + duratainOre +
+                ", genere=" + genere +
+                ", id=" + id +
+                ", titolo='" + titolo + '\'' +
+                ", annoDiPublicazione=" + annoDiPublicazione +
+                ", prezzo=" + prezzo +
+                '}';
+    }
+
     public void setDuratainOre(int duratainOre) {
         this.duratainOre = duratainOre;
     }

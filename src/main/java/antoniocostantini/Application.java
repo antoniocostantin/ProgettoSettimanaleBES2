@@ -1,20 +1,19 @@
 package antoniocostantini;
 
-import antoniocostantini.entities.Generi;
-import antoniocostantini.entities.Gioco;
-import antoniocostantini.entities.GiocoDaTavolo;
-import antoniocostantini.entities.Videogioco;
+import antoniocostantini.entities.*;
 import com.github.javafaker.Faker;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public class  Application {
 
     public static void main(String[] args) {
         Faker faker = new Faker();
         Random rand = new Random();
+        Scanner sc = new Scanner(System.in);
         List<Gioco> listaGiochi = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             if(rand.nextBoolean()){
@@ -36,5 +35,33 @@ public class  Application {
             System.out.println(gioco);
         }
         });
+
+        Collezione lista = new Collezione(listaGiochi);
+
+            Videogioco g = new Videogioco(faker.book().title(),Generi.ARACDE,23.44, "Ps4", 5,2020);
+        lista.addGioco(g);
+
+        System.out.println(lista);
+
+        System.out.println("Inserisci id");
+        int id = Integer.parseInt(sc.nextLine());
+        Gioco gioco = lista.getGiocoById(id);
+        System.out.println(gioco);
+
+        System.out.println("Inserisci il prezzo");
+        int prezzo = Integer.parseInt(sc.nextLine());
+        List<Gioco> pricelist = lista.getGiochiByPrice(prezzo);
+        System.out.println(pricelist);
+
+        System.out.println("Inserisci il numero di giocatori");
+        int numero = Integer.parseInt(sc.nextLine());
+        List<Gioco> numList = lista.getGiochiBynumeroGiocatori(numero);
+        System.out.println(numList);
+
+        System.out.println("Inserisci l'id dell'elemento che vuoi eliminare");
+        int id2 = Integer.parseInt(sc.nextLine());
+        lista.deleteById( id2);
+        System.out.println(lista);
+
     }
 }
