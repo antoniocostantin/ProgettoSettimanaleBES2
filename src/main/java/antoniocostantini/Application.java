@@ -84,6 +84,7 @@ public class  Application {
         System.out.println(lista);
 
         System.out.println("Inserisci l'id dell'elemento che vuoi modificare");
+        int id3 = Integer.parseInt(sc.nextLine());
         System.out.println("Inserisci il titolo");
         String tit = sc.nextLine();
         System.out.println("Inserisci il prezzo");
@@ -108,7 +109,7 @@ public class  Application {
         int anno = Integer.parseInt(sc.nextLine());
 
         Videogioco gico = new Videogioco(tit,ge,pr, piattaform, durat,anno);
-        int id3 = Integer.parseInt(sc.nextLine());
+
         lista.update( gico, id3);
         System.out.println(lista);
 
