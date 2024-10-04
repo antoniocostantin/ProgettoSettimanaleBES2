@@ -37,8 +37,26 @@ public class  Application {
         });
 
         Collezione lista = new Collezione(listaGiochi);
+        System.out.println("Inserisci il titolo");
+        String titolo = sc.nextLine();
+        System.out.println("Inserisci il genere");
+        char genere = sc.nextLine().charAt(0);
+        Generi gen = Generi.AZIONE;
+        switch (genere){
+            case 'x': gen = Generi.FPS;break;
+            case 'a': gen = Generi.ARACDE;break;
+            case 'b': gen = Generi.AVVENTURA; break;
+            case 'c': gen = Generi.AZIONE;break;
+            case 'd': gen = Generi.PICCHIADURO;break;
+            case 'e': gen = Generi.SPORT;break;
+            default: gen = Generi.AZIONE;break;
+        }
+        System.out.println("Inserisci la piattaforma");
+        String piattaforma = sc.nextLine();
+        System.out.println("Inserisci la durata in ore");
+        int durata = Integer.parseInt(sc.nextLine());
 
-            Videogioco g = new Videogioco(faker.book().title(),Generi.ARACDE,23.44, "Ps4", 5,2020);
+            Videogioco g = new Videogioco(titolo,gen,34.5, piattaforma, durata,2020);
         lista.addGioco(g);
 
         System.out.println(lista);
