@@ -41,10 +41,15 @@ public class Collezione {
 
     public void update(Gioco g, int id) {
         int indice = listaGiochi.stream().filter(gioco -> gioco.getId() == id).findFirst().get().getId();
-        listaGiochi.remove(indice);
-        listaGiochi.add(g);
+        listaGiochi.set(indice, g);
     }
 
     public void Stats(){
+        List<Videogioco> videogiochi = listaGiochi.stream().filter(g -> g instanceof Videogioco).map(g -> (Videogioco) g).toList();
+        List<GiocoDaTavolo> giochiDaTavolo = listaGiochi.stream().filter(g -> g instanceof GiocoDaTavolo).map(g -> (GiocoDaTavolo) g).toList();
+        DoubleSummaryStatistics stats = listaGiochi.stream().mapToDouble(Gioco::getPrezzo).summaryStatistics();
+        Gioco expencier = listaGiochi.stream().filter(g -> g.getPrezzo() == stats.getMax()).findFirst().get();
+        System.out.println("tot giochi da tavolo = " + giochiDaTavolo.size() +"; tot videogames = " + videogiochi.size() + "; gioco più costoso = " + expencier + "; media prezzi = " + stats.getAverage());
+
     }
 }

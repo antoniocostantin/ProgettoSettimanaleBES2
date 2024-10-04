@@ -1,7 +1,7 @@
 package antoniocostantini.entities;
 
 
-import java.util.Random;
+
 
 public abstract class Gioco {
     private int id;

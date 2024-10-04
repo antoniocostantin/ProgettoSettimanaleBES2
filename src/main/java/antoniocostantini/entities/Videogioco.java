@@ -12,10 +12,7 @@ public class Videogioco extends Gioco{
     private int annoDiPublicazione;
     private double prezzo;
 
-    @Override
-    public String toString() {
-        return "Videogioco{}";
-    }
+
 
     public Videogioco(String titolo, Generi genere, double prezzo, String piattaforma, int duratainOre, int annoDiPublicazione) {
         Random rand = new Random();
